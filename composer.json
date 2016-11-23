@@ -2,6 +2,7 @@
 	"name": "f5sites/mysql-manager",
 	"description": "WordPress F5 Sites SERVER MANAGEMENT projects. Just a custom script exclusive for F5 SITES server configuration schema, but anyone can use even with low documentation",
 	"type": "f5sites-servers",
+	"version": "0.1",
 	"authors": [
 		{
 			"name": "Francisco Matelli Matulovic",
