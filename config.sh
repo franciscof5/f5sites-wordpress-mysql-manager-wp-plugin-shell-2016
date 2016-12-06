@@ -1,4 +1,4 @@
-#
+##
 MYSQL_USER_LOCAL="user"
 MYSQL_PASS_LOCAL="pass"
 #
