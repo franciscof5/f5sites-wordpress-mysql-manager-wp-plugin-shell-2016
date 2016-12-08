@@ -1,0 +1,12 @@
+###
+MYSQL_USER_LOCAL=""
+MYSQL_PASS_LOCAL=""
+#
+SSH_USER=""
+SSH_PASS=""
+IP="1.1.1.1"
+#
+MYSQL_USER_REMOTE=""
+MYSQL_PASS_REMOTE=""
+#
+BACKUP_DIR=~/Downloads/mysql-backups/$(hostname)/$(date +%Y-%m-%d_%Hh);
