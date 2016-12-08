@@ -11,7 +11,7 @@ echo "Load configuration file. (to change settings open config.sh)"
 source config.sh
 
 echo "dumping a copy of local database..."
-mysqldump -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL --lock-tables=false --databases --add-drop-database $DATABASENAME | gzip -v > /tmp/$DATABASENAME-local.sql.gz
+mysqldump -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL --lock-tables=false --databases --add-drop-database --compatible=mysql4,no_table_options $DATABASENAME | gzip -v > /tmp/$DATABASENAME-local.sql.gz
 
 echo "uploading database..."
 scp /tmp/$DATABASENAME-local.sql.gz $SSH_USER@$IP:/tmp/$DATABASENAME-local.sql.gz 
