@@ -7,7 +7,7 @@ echo "What database you want to sync? Write database name and hit enter"
 read DATABASENAME
 
 # Configuration file
-echo "Load configuration file. (to change settings open config.sh)"
+echo "Load configuration file... (to change settings open config.sh)"
 source config.sh
 
 echo "dumping a copy of local database..."
