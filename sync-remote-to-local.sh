@@ -4,7 +4,13 @@ echo "For custom use don't forget to manually open the script and manually chang
 echo "Hi, $USER"
 
 echo "What database you want to sync? Write database name and hit enter"
+echo "Please hit enter for fnetwok database, or tip database name"
 read DATABASENAME
+
+if [ "$DATABASENAME"=="" ]; then
+echo "Using default fnetwork database"
+DATABASENAME="fnetwork"
+fi
 
 # Configuration file
 echo "Load configuration file... (to change settings open config.sh)"
