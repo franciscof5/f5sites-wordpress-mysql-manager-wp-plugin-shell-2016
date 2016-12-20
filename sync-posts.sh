@@ -3,8 +3,14 @@ echo "F5 SITES Mysql Manager, Sync Posts (Download/Upload Latest Posts) (linux t
 echo "Don't forget to manually set and copy config-example.sh to config.sh"
 echo "Hi, $USER"
 
-#echo "We will download posts from remote server, please hit enter"
-#read DATABASENAME
+echo "Please hit enter for fnetwok database, or tip above database name"
+read DATABASENAME
+
+if [ "$DATABASENAME"=="" ]; then
+echo "Using default fnetwork database"
+DATABASENAME="fnetwork"
+fi
+
 
 # Configuration file
 echo "Load configuration file... (to change settings open config.sh)"
@@ -14,17 +20,25 @@ POSTS_TABLE=$WP_PREFIX"posts"
 
 echo "Looking for last post_id local..."
 LAST_ID_LOCAL=$(mysql fnetwork -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -se "SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1")
-echo "Last id local: $LAST_ID_LOCAL"
+echo "LOCAL (last id): $LAST_ID_LOCAL"
 
-echo "Looking for last post_id remote..."
-LAST_ID_REMOTE=$(ssh $SSH_USER@$IP "mysql fnetwork -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE -se 'SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1'")
-echo "Last id remote: $LAST_ID_REMOTE"
+echo "Connecting to remote server for last post_id remote..."
+LAST_ID_REMOTE=3522
+#$(ssh $SSH_USER@$IP "mysql fnetwork -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE -se 'SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1'")
+echo "REMOTE (last id): $LAST_ID_REMOTE"
 
-if $LAST_ID_LOCAL = $LAST_ID_REMOTE
-then echo "Already synched, nothing to do, quiting..."
-else {
-	echo "Need sync..."
-}
+#if ["$LAST_ID_LOCAL"="$LAST_ID_REMOTE"];
+if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
+echo "Already synched, nothing to do, quiting..."
+echo "quit"
+else 
+	if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
+	echo "Local posts is ahead of remote, uploading posts to remote server..."
+	else
+	echo "Remote posts is ahead of local, downloading posts to local server..."
+	source sync-posts-remote-to-local.sh
+	fi
+
 fi
 
 
