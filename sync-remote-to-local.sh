@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "F5 SITES Mysql Manager, Remote Sync Remote to Local (linux to linux)"
+echo $(date)
+echo "2F5 SITES Mysql Manager, Remote Sync Remote to Local (linux to linux)"
 echo "For custom use don't forget to manually open the script and manually change ssh and mysql users, passwds and ips (and options like --add-drop-database and --lock-tables)"
 echo "Hi, $USER"
 
@@ -17,7 +18,7 @@ echo "Load configuration file... (to change settings open config.sh)"
 source config.sh
 
 echo "connecting to a remote server to dump a copy of a database..."
-ssh $SSH_USER@$IP "mysqldump -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE --lock-tables=false  --databases --add-drop-database --compatible=mysql4,no_table_options --default-character-set=utf8 $DATABASENAME | gzip > /tmp/$DATABASENAME-remote.sql.gz"
+ssh $SSH_USER@$IP "mysqldump -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE --lock-tables=false  --databases --add-drop-database --compatible=no_table_options --default-character-set=utf8 $DATABASENAME | gzip > /tmp/$DATABASENAME-remote.sql.gz"
 
 echo "downloading and extracting database..."
 scp $SSH_USER@$IP:/tmp/$DATABASENAME-remote.sql.gz /tmp/$DATABASENAME-remote.sql.gz
