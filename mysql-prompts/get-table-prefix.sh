@@ -1,9 +1,9 @@
 echo "Enter table prefix with underline_, leave empty for f5sites_"
-read WP_PREFIX
+read TABLE_PREFIX
 
-if [ "$WP_PREFIX"=="" ]; then
+if  [[ -z "$TABLE_PREFIX" ]]; then
 	echo "Using default table prefix: $DEFAULT_TABLE_PREFIX"
-	WP_PREFIX="$DEFAULT_TABLE_PREFIX"
+	TABLE_PREFIX="$DEFAULT_TABLE_PREFIX"
 fi
 
 

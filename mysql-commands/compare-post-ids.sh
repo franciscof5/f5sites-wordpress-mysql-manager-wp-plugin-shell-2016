@@ -1,24 +1,32 @@
-#if ["$LAST_ID_LOCAL"="$LAST_ID_REMOTE"];
 if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
 	echo "Already synched, nothing to do, quiting..."
 	echo "quit"
 	POST_IS_AHEAD_IN="NONE"
 else 
-	if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
-		DIF=$(($LAST_ID_LOCAL-$LAST_ID_REMOTE))
+	DIF=$(($LAST_ID_LOCAL-$LAST_ID_REMOTE))
+	#if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
+	if [ "$DIF" < 0 ]; then	
 		POST_IS_AHEAD_IN="LOCAL"
-		echo "Local posts is ahead of remote by $DIF posts, uploading posts to remote server..."
-		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-		#source sync-local-to-remote.sh
-		source mysql-commands/local-to-remote-sync-posts.sh
+		echo "Local posts is ahead of remote by $DIF posts, uploading posts to remote server... Do you want to automatic update? (y/n)"
+		#source mysql-commands/local-dump-posts.sh
+		#source mysql-commands/local-upload-posts.sh
+		#source mysql-commands/local-replace-remote-posts.sh
 	else
-		DIF=$(($LAST_ID_REMOTE-$LAST_ID_LOCAL))
-		echo "Remote posts is ahead of local by $DIF posts, downloading posts to local server..."
+		#DIF=$(($LAST_ID_REMOTE-$LAST_ID_LOCAL))
 		POST_IS_AHEAD_IN="REMOTE"
-		source  mysql-commands/remote-to-local-sync-posts.sh
-		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-		#source sync-posts-remote-to-local.sh
-		#source sync-remote-to-local.sh
+		echo "Remote posts is ahead of local by $DIF posts, downloading posts to local server... Do you want to automatic update? (y/n)"
+		
+		read PROCEED
+		if [ "$PROCEED"=="y" ]; then
+			echo "Proceeding with replacement..."
+			#source mysql-commands/remote-replace-local-posts.sh
+			source mysql-commands/remote-dump-posts.sh
+			source mysql-commands/remote-download-posts.sh
+			source mysql-commands/remote-replace-local-posts.sh
+		else
+			echo "quit"
+		fi
+		
 	fi
 
 fi

@@ -3,12 +3,17 @@
 source mysql-saudations/start.sh
 echo "Sync WordPress databases across servers"
 
-
 source mysql-commands/load-config.sh
 
 source mysql-prompts/get-database-name.sh
 
-#source mysql-prompts/get-table-prefix.sh
+source mysql-prompts/get-table-prefix.sh
+
+source mysql-commands/remote-dump.sh
+
+source mysql-commands/remote-download.sh
+
+source mysql-commands/remote-replace-local.sh
 
 #source mysql-commands/generate-tables.sh
 
@@ -17,14 +22,6 @@ source mysql-prompts/get-database-name.sh
 #source mysql-commands/remote-get-last-post-id.sh
 
 #source mysql-commands/compare-post-ids.sh
-
-#source mysql-commands/local-to-remote-sync-all.sh
-
-source mysql-commands/local-dump.sh
-
-source mysql-commands/local-upload-to-remote.sh
-
-source mysql-commands/local-replace-remote.sh
 
 #echo $POST_IS_AHEAD_IN
 
