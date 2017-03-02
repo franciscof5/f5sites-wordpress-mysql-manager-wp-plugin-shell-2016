@@ -1,31 +1,23 @@
 #!/bin/bash
-echo "F5 SITES Mysql Manager, Sync Posts (Download/Upload Latest Posts) (linux to linux)"
-echo "Don't forget to manually set and copy config-example.sh to config.sh"
-echo "Hi, $USER"
 
-echo "What database you want to sync? Write database name and hit enter"
-echo "Please hit enter for fnetwok database, or tip database name"
-read DATABASENAME
+source mysql-prompts/saudation.sh
+echo "Sync WordPress databases across servers"
 
-if [ "$DATABASENAME"=="" ]; then
-echo "Using default fnetwork database"
-DATABASENAME="fnetwork"
-fi
+source mysql-commands/load-config.sh
 
+source mysql-commands/get-database-name.sh
 
-# Configuration file
-echo "Load configuration file... (to change settings open config.sh)"
-source config.sh
+source mysql-commands/get-table-prefix.sh
 
 POSTS_TABLE=$WP_PREFIX"posts"
 
 echo "Looking for last post_id local..."
 LAST_ID_LOCAL=$(mysql fnetwork -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -se "SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1")
-echo "LOCAL (last id): $LAST_ID_LOCAL"
+echo "LOCAL last post ID: $LAST_ID_LOCAL"
 
-echo "Connecting to remote server for last post_id remote..."
+echo "Connecting to remote server for last post id remote..."
 LAST_ID_REMOTE=$(ssh $SSH_USER@$IP "mysql fnetwork -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE -se 'SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1'")
-echo "REMOTE (last id): $LAST_ID_REMOTE"
+echo "REMOTE last post id: $LAST_ID_REMOTE"
 
 #if ["$LAST_ID_LOCAL"="$LAST_ID_REMOTE"];
 if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
@@ -34,11 +26,11 @@ echo "quit"
 else 
 	if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
 	echo "Local posts is ahead of remote, uploading posts to remote server..."
-	echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
+	#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
 	source sync-local-to-remote.sh
 	else
 	echo "Remote posts is ahead of local, downloading posts to local server..."
-	echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
+	#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
 	#source sync-posts-remote-to-local.sh
 	source sync-remote-to-local.sh
 	fi
