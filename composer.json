@@ -1,6 +1,6 @@
 {
 	"name": "f5sites/mysql-manager",
-	"description": "WordPress F5 Sites SERVER MANAGEMENT projects. Just a custom script exclusive for F5 SITES server configuration schema, but anyone can use even with low documentation",
+	"description": "WordPress MySQL Manager was designed to speedup wordpress data sync between wordpress servers instances, respecting WordPress original data model.",
 	"type": "f5sites-servers",
 	"authors": [
 		{
