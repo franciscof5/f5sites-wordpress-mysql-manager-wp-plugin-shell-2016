@@ -9,31 +9,16 @@ source mysql-prompts/get-database-name.sh
 
 source mysql-prompts/get-table-prefix.sh
 
-POSTS_TABLE=$WP_PREFIX"posts"
+source mysql-commands/generate-tables.sh
 
 source mysql-commands/local-get-last-post-id.sh
 
 source mysql-commands/remote-get-last-post-id.sh
 
-#if ["$LAST_ID_LOCAL"="$LAST_ID_REMOTE"];
-if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
-	echo "Already synched, nothing to do, quiting..."
-	echo "quit"
-else 
-	if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
-		DIF=$(($LAST_ID_LOCAL-$LAST_ID_REMOTE))
-		echo "Local posts is ahead of remote by $DIF posts, uploading posts to remote server..."
-		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-		#source sync-local-to-remote.sh
-	else
-		DIF=$(($LAST_ID_REMOTE-$LAST_ID_LOCAL))
-		echo "Remote posts is ahead of local by $DIF posts, downloading posts to local server..."
-		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-		#source sync-posts-remote-to-local.sh
-		#source sync-remote-to-local.sh
-	fi
+source mysql-commands/compare-post-ids.sh
 
-fi
+#echo $POST_IS_AHEAD_IN
+
 source mysql-saudations/end.sh
 
 #2 - busca o ultimo post id remote
