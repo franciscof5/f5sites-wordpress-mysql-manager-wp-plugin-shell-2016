@@ -1,42 +1,40 @@
 #!/bin/bash
 
-source mysql-prompts/saudation.sh
+source mysql-saudations/start.sh
 echo "Sync WordPress databases across servers"
 
 source mysql-commands/load-config.sh
 
-source mysql-commands/get-database-name.sh
+source mysql-prompts/get-database-name.sh
 
-source mysql-commands/get-table-prefix.sh
+source mysql-prompts/get-table-prefix.sh
 
 POSTS_TABLE=$WP_PREFIX"posts"
 
-echo "Looking for last post_id local..."
-LAST_ID_LOCAL=$(mysql fnetwork -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -se "SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1")
-echo "LOCAL last post ID: $LAST_ID_LOCAL"
+source mysql-commands/local-get-last-post-id.sh
 
-echo "Connecting to remote server for last post id remote..."
-LAST_ID_REMOTE=$(ssh $SSH_USER@$IP "mysql fnetwork -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE -se 'SELECT ID FROM $POSTS_TABLE ORDER BY ID DESC LIMIT 1'")
-echo "REMOTE last post id: $LAST_ID_REMOTE"
+source mysql-commands/remote-get-last-post-id.sh
 
 #if ["$LAST_ID_LOCAL"="$LAST_ID_REMOTE"];
 if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
-echo "Already synched, nothing to do, quiting..."
-echo "quit"
+	echo "Already synched, nothing to do, quiting..."
+	echo "quit"
 else 
 	if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
-	echo "Local posts is ahead of remote, uploading posts to remote server..."
-	#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-	source sync-local-to-remote.sh
+		DIF=$(($LAST_ID_LOCAL-$LAST_ID_REMOTE))
+		echo "Local posts is ahead of remote by $DIF posts, uploading posts to remote server..."
+		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
+		#source sync-local-to-remote.sh
 	else
-	echo "Remote posts is ahead of local, downloading posts to local server..."
-	#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
-	#source sync-posts-remote-to-local.sh
-	source sync-remote-to-local.sh
+		DIF=$(($LAST_ID_REMOTE-$LAST_ID_LOCAL))
+		echo "Remote posts is ahead of local by $DIF posts, downloading posts to local server..."
+		#echo "WARNING, ALL DATABASE WILL BE SYNCHED (not only posts)..."
+		#source sync-posts-remote-to-local.sh
+		#source sync-remote-to-local.sh
 	fi
 
 fi
-
+source mysql-saudations/end.sh
 
 #2 - busca o ultimo post id remote
 #3 - compara a diferenca
@@ -59,4 +57,4 @@ fi
 #mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL $DATABASENAME < /tmp/$DATABASENAME-remote.sql
 
 #echo "sync-local-to-remote.sh ended."
-echo "by Francisco Matelli Matulovic | franciscomat.com | f5sites.com"
+#echo "by Francisco Matelli Matulovic | franciscomat.com | f5sites.com"
