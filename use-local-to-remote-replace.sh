@@ -8,12 +8,19 @@ source mysql-commands/load-config.sh
 
 source mysql-prompts/get-database-name.sh
 
-source mysql-commands/local-dump.sh
+source mysql-prompts/get-table-prefix.sh
 
-source mysql-commands/local-upload-to-remote.sh
+echo "Tip what service you want to execute?"
+echo "1 - Sync ALL tables"
+echo "2 - Sync posts tables (posts, postmeta, categories...)"
+read SERVICENUMBER
 
-source mysql-commands/remote-safe-copy.sh
-
-source mysql-commands/local-replace-remote.sh
+if [ "$SERVICENUMBER" -eq 1 ]; then
+	echo "Service 1 selected, replacing remote db with local"
+	source mysql-commands-groups/local-replace-remote.sh
+else
+	echo "Service 2 selected, replacing local db with remote"
+	source mysql-commands-groups/local-replace-remote-posts.sh
+fi
 
 source mysql-saudations/end.sh
