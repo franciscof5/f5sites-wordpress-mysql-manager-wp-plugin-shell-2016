@@ -1,4 +1,4 @@
-###
+#
 MYSQL_USER_LOCAL=""
 MYSQL_PASS_LOCAL=""
 #
@@ -9,7 +9,12 @@ IP="1.1.1.1"
 MYSQL_USER_REMOTE=""
 MYSQL_PASS_REMOTE=""
 #
-BACKUP_DIR=~/Downloads/mysql-backups/$(hostname)/$(date +%Y-%m-%d_%Hh);
+LOCAL_BACKUP_DIR=/backup
+LOCAL_TEMP_DIR=/tmp
+LOCAL_SAFE_COPY_DIR=/backup
+REMOTE_BACKUP_DIR=/backup
+REMOTE_TEMP_DIR=/tmp
+REMOTE_SAFE_COPY_DIR=/backup
 #
-DEFAULT_DATABASE="dbname"
-DETAULT_TABLE_PREFIX="prefix_"
+DEFAULT_DATABASE="wordpress"
+DETAULT_TABLE_PREFIX="wp_"

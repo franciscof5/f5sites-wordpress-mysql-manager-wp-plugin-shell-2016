@@ -1,3 +1,4 @@
 echo "Downloading and extracting set of tables from database..."
-scp $SSH_USER@$IP:/tmp/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz /tmp/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz
-gunzip -fv /tmp/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz 
+test -d "$LOCAL_TEMP_DIR" || mkdir -p "$LOCAL_TEMP_DIR"
+scp $SSH_USER@$IP:$REMOTE_TEMP_DIR/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz $LOCAL_TEMP_DIR/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz
+gunzip -fv $LOCAL_TEMP_DIR/$DATABASENAME-"$TABLE_PREFIX"posts.sql.gz 
