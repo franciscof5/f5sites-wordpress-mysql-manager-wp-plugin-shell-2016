@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "What operation you need?"
-echo "1 - Auto Sync Posts between instances, check for highest post ID"
+echo "1 - Auto Sync between wordpress servers checking for highest post ID"
 echo "2 - Local to Remote replace database"
 echo "3 - Remote to Local replace database"
 read OPERATION
@@ -11,7 +11,7 @@ if [ "$OPERATION" -eq 1 ];then
 else 
 	if [ "$OPERATION" -eq 2 ];then
 		echo "2 selected"
-		source "use-local-to-remote.sh"
+		source "use-local-to-remote-replace.sh"
 	else 
 		if [ "$OPERATION" -eq 3 ];then
 			echo "3 selected"
