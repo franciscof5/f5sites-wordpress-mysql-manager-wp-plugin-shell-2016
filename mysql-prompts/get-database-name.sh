@@ -6,10 +6,8 @@ if  [[ -z "$DATABASENAME" ]]; then
 	DATABASENAME=$DEFAULT_DATABASE
 else
     if [ "$DATABASENAME" == "SHOW" ]; then
-    	echo "SHOWING..."
+    	echo "Showing..."
     	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -se "SHOW DATABASES;"
-    	#echo "What database you want to sync? Write database name and hit enter"
-	#read DATABASENAME
     	source mysql-prompts/get-database-name.sh
     fi
 fi
