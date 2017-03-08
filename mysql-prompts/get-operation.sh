@@ -7,15 +7,15 @@ read OPERATION
 
 if [ "$OPERATION" -eq 1 ];then
 	echo "1 Selected"
-	source "use-auto-sync-posts.sh"
+	OPERATION="auto-sync"
 else 
 	if [ "$OPERATION" -eq 2 ];then
 		echo "2 selected"
-		source "use-local-to-remote-replace.sh"
+		OPERATION="local-replace-remote"
 	else 
 		if [ "$OPERATION" -eq 3 ];then
 			echo "3 selected"
-			source "use-remote-to-local.sh"
+			OPERATION="remote-replace-local"
 		fi
 	fi
 fi
