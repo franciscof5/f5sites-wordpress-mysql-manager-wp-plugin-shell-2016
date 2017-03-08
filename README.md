@@ -4,6 +4,8 @@ Official Website: f5sites.com/wordpress-mysql-manager
 
 Developd by: Francisco Matelli Matulovic - franciscomat.com
 
+DESCRIPTION
+
 WordPress MySQL Manager was designed to speedup wordpress data sync between wordpress servers instances, respecting WordPress original data model.
 
 At the time it can be configured for 2 servers instances only, eg. development and production server. They connect trought SSH and use MySQL worpress special queries to sync data respecting WordPress original data model, you can sync only posts related content or just wp_options tables.
@@ -19,7 +21,9 @@ B) USAGE
 
 1 - First change settings in config-example.sh and rename it to config.sh
 
-2 - Open terminal in that folder and tip ./use-command-name
+2 - Open terminal in that folder and tip ./start
+
+3 - The wizard will guide you
 
 B) NOTES
 
