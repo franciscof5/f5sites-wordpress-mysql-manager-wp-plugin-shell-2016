@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "What operation you need?"
-echo "1 - Auto Sync between wordpress servers checking for highest post ID"
+echo "1 - Auto Sync between wordpress POSTS by checking for highest post ID"
 echo "2 - Local to Remote replace database"
 echo "3 - Remote to Local replace database"
 read OPERATION

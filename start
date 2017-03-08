@@ -8,11 +8,15 @@ source mysql-prompts/get-operation.sh
 
 echo $OPERATION
 
-source mysql-prompts/get-service-number.sh
+if [ "$OPERATION" != "auto-sync" ];then
+	source mysql-prompts/get-service-complement.sh
+fi
 
 source mysql-prompts/get-database-name.sh
 
 source mysql-prompts/get-table-prefix.sh
+
+source mysql-commands/generate-tables.sh
 
 source mysql-commands-groups/$OPERATION$SERVICECOMPLEMENT.sh
 
