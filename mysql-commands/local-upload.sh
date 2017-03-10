@@ -1,0 +1,3 @@
+echo "uploading database to: $REMOTE_TEMP_DIR..."
+scp $REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-local.sql.gz $SSH_USER@$IP:$REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-local.sql.gz 
+

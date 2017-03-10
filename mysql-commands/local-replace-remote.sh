@@ -1,3 +1,3 @@
-echo "remote database overwritting with local..."
-ssh $SSH_USER@$IP "gunzip -fv /tmp/$DATABASENAME-local.sql.gz && mysql -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE  $DATABASENAME < /tmp/$DATABASENAME-local.sql"
+echo "Remote database overwritting with local $DATABASENAME tables $TABLES_SELECTED in $LOCAL_TEMP_DIR..."
+ssh $SSH_USER@$IP "gunzip -fv $REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-local.sql.gz && mysql -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE $DATABASENAME < $REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-local.sql"
 

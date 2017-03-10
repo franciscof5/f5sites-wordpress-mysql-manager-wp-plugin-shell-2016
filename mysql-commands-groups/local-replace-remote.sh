@@ -1,7 +1,9 @@
 #!/bin/bash
+#source mysql-commands-group/get-extra-details.sh
+
 source mysql-commands/local-dump.sh
 
-source mysql-commands/local-upload-to-remote.sh
+source mysql-commands/local-upload.sh
 
 source mysql-commands/remote-safe-copy.sh
 

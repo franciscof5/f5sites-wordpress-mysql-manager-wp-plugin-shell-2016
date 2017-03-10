@@ -6,7 +6,6 @@ if  [[ -z "$TABLE_PREFIX" ]]; then
 	#TABLE_PREFIX="$DEFAULT_TABLE_PREFIX"
 	echo "Using default table prefix: $DATABASENAME_"
 	TABLE_PREFIX="$DATABASENAME"_
-	
 fi
 
 

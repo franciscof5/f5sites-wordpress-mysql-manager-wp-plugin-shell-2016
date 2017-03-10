@@ -18,3 +18,10 @@ REMOTE_SAFE_COPY_DIR=/backup
 #
 DEFAULT_DATABASE="wordpress"
 DETAULT_TABLE_PREFIX="wp_"
+# mysdump option, comment to remove option when dumping https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+LOCKTABLES=" --lock-tables=false "
+DATABASES=" --databases"
+DROPDB=" --add-drop-database "
+CARACHTER=" --default-character-set=utf8 "
+COMPA_M4=" --compatible=mysql4 "
+COMPA_NT=" --compatible=no_table_options"

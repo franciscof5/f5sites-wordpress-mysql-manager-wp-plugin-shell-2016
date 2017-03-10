@@ -1,3 +1,3 @@
-echo "REMOTE SERVER: downloading and extracting database..."
-scp $SSH_USER@$IP:/tmp/$DATABASENAME-remote.sql.gz /tmp/$DATABASENAME-remote.sql.gz
-gunzip -fv /tmp/$DATABASENAME-remote.sql.gz 
+echo "Downloading and extracting database to: $LOCAL_TEMP_DIR..."
+scp $SSH_USER@$IP:$REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-remote.sql.gz $REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-remote.sql.gz
+gunzip -fv $LOCAL_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-remote.sql.gz 

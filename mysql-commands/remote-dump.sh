@@ -1,3 +1,4 @@
-echo "REMOTE SERVER: connecting to dump a copy of a database $DATABASENAME with prefix $TABLE_PREFIX"
-ssh $SSH_USER@$IP "mysqldump -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE --lock-tables=false  --databases --add-drop-database --compatible=no_table_options --default-character-set=utf8 $DATABASENAME | gzip > /tmp/$DATABASENAME-remote.sql.gz"
+echo "Remote dump a copy of remote database $DATABASENAME with prefix $TABLE_PREFIX selected $TABLES_SELECTED to: $REMOTE_TEMP_DIR, extra options:  $NODATA $LOCKTABLES $DATABASES $DROPDB $CHARACTER $COMPA_M4 $COMPA_NT..."
+echo $TABLES_SELECTED_FOR_DUMP_LINE
+ssh $SSH_USER@$IP "mysqldump -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE $NODATA $LOCKTABLES $DATABASES $DROPDB $CHARACTER $COMPA_M4 $COMPA_NT $DATABASENAME $TABLES_SELECTED_FOR_DUMP_LINE | gzip > $REMOTE_TEMP_DIR/$DATABASENAME$TABLES_SELECTED-remote.sql.gz"
 #todo: insert tables and prefix

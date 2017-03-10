@@ -1,4 +1,4 @@
-echo "What database you want to sync? Write database name and hit enter, tip SHOW to see all databases in you local MySQL, leave empty for default: $DEFAULT_DATABASE"
+echo "Write database name and hit enter, tip SHOW to see all databases in you local MySQL, leave empty for default: $DEFAULT_DATABASE"
 read DATABASENAME
 
 if  [[ -z "$DATABASENAME" ]]; then
