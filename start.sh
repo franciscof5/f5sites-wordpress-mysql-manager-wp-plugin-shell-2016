@@ -12,7 +12,7 @@ source mysql-prompts/get-table-prefix.sh
 
 source mysql-prompts/get-tables-complement.sh
 
-source mysql-commands-groups/$OPERATION.sh
+source mysql-operations/$OPERATION.sh
 
 source start.sh
 

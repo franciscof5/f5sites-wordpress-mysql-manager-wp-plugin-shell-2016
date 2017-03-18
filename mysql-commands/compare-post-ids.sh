@@ -13,7 +13,7 @@ else
 		read PROCEED
 		if [ "$PROCEED" = "y" ]; then
 			echo "Proceeding with replacement..."
-			source mysql-commands-groups/local-replace-remote.sh
+			source mysql-operations/local-replace-remote.sh
 			#source mysql-commands/remote-download-posts.sh
 			#source mysql-commands/local-safe-copy.sh
 			#source mysql-commands/remote-replace-local-posts.sh
@@ -33,7 +33,7 @@ else
 		read PROCEED
 		if [ "$PROCEED" = "y" ]; then
 			echo "Proceeding with replacement..."
-			source mysql-commands-groups/remote-replace-local.sh
+			source mysql-operations/remote-replace-local.sh
 			#source mysql-commands/remote-download-posts.sh
 			#source mysql-commands/local-safe-copy.sh
 			#source mysql-commands/remote-replace-local-posts.sh
