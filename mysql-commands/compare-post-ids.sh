@@ -1,5 +1,7 @@
 if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
+	echo "##########################################"
 	echo "Already synched, nothing to do, quiting..."
+	echo "##########################################"
 	#echo "quit"
 	POST_IS_AHEAD_IN="NONE"
 	source start.sh

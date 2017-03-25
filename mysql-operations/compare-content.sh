@@ -2,7 +2,7 @@
 
 COMPA_NT=" --compatible=no_table_options "
 
-TABLE="wp_options"
+#TABLES_SELECTED="wp_options"
 
 source mysql-commands/local-dump.sh
 
