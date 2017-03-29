@@ -26,7 +26,7 @@ case "$SERVICENUMBER" in
 	TABLES_SELECTED_FOR_DUMP_LINE="${TABLE_PREFIX}posts ${TABLE_PREFIX}postmeta ${TABLE_PREFIX}termmeta ${TABLE_PREFIX}terms ${TABLE_PREFIX}term_relationships ${TABLE_PREFIX}term_taxonomy"
    ;;
    "4") echo "Selected 4 - ${TABLE_PREFIX}posts "
-   TABLES_SELECTED="${TABLE_PREFIX}$posts"
+   TABLES_SELECTED="${TABLE_PREFIX}posts"
    TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
    ;;
    "9") echo "Selected 9 - Enter table(s) name(s) (WITHOUT PREFIX)"
