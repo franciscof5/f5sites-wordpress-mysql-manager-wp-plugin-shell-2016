@@ -44,6 +44,7 @@ case "$OPERATION" in
 	read DIRECT
 	if [ "$DIRECT" = "1" ]; then
 		source mysql-commands/local-backup-all-dbs.sh
+      source start.sh
 		#exit
 	#else
 	#   	OPERATION="local-backup"
