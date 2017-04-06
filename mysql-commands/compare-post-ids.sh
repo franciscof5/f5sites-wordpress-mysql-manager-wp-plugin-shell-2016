@@ -1,7 +1,8 @@
 if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
-	echo "##########################################"
-	echo "Already synched, nothing to do, quiting..."
-	echo "##########################################"
+	echo "#################################################"
+	echo "Already same highest ID nothing to do, quiting..."
+	echo "#################################################"
+	echo "It does not means it is synched, the content from servers db tables can be different, we only compare highest IDs number"
 	#echo "quit"
 	POST_IS_AHEAD_IN="NONE"
 	source start.sh
