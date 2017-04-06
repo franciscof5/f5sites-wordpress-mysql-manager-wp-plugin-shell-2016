@@ -18,7 +18,11 @@ case "$SERVICENUMBER" in
    	#GET TABLES TO A FILE
    	echo "select table_name from tables where table_schema = '$DATABASENAME' and table_name like '${TABLE_PREFIX}%'"
    	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -N information_schema -e "select table_name from tables where table_schema = '$DATABASENAME' and table_name like '${TABLE_PREFIX}%'" > tables.txt 
-   	$TABLES_SELECTED_FOR_DUMP_LINE=$( cat tables.txt )
+   	#$TABLES_SELECTED_FOR_DUMP_LINE="`cat tables.txt`"
+   	TABLES_SELECTED_FOR_DUMP_LINE=""
+   	while read line; do    
+	    TABLES_SELECTED_FOR_DUMP_LINE="$TABLES_SELECTED_FOR_DUMP_LINE $line"    
+	done < tables.txt
    	TABLES_SELECTED=$TABLE_PREFIX
    ;;
    "3") echo "Selected 3 - WordPress Posts" 
