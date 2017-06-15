@@ -9,7 +9,7 @@ if [ "$LAST_ID_LOCAL" == "$LAST_ID_REMOTE" ]; then
 else 
 	DIF=$(($LAST_ID_LOCAL-$LAST_ID_REMOTE))
 	#if [ "$LAST_ID_LOCAL" < "$LAST_ID_REMOTE" ]; then
-	if [ "$DIF" < 0 ]; then	
+	if [ "$DIF" > 0 ]; then
 		POST_IS_AHEAD_IN="LOCAL"
 		echo "Local posts is ahead of remote by $DIF posts, uploading posts to remote server... Do you want to automatic update? (y/n)"
 		
