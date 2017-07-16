@@ -3,6 +3,7 @@ source mysql-saudations/hello.sh
 
 source mysql-commands/load-config.sh
 
+OPERATION=""
 DATABASENAME=$DEFAULT_DATABASE
 TABLE_PREFIX=$DEFAULT_TABLE_PREFIX
 TABLES_SELECTED_ENTERED=""
@@ -12,9 +13,9 @@ case "$1" in
    -a | --auto) echo "Selected 1 - Auto Sync" 
    	OPERATION="auto-sync"
    ;;
-	-e | --export )
-	    OPERATION="local-replace-remote"
-	    case "$2" in
+	#-e | --export )
+	    
+	   # case "$2" in
 		   --all) echo "All Database: $DATABASENAME (all tables, ignoring table prefix previous entered)"
 				$SERVICENUMBER=1
 		   ;;
@@ -30,19 +31,13 @@ case "$1" in
 		   --options) echo "Options - ${TABLE_PREFIX}options"
 		   		$SERVICENUMBER=5
 		   ;;
-		   *)
-				TATABLES_SELECTED="${TABLE_PREFIX}${2}"
-			;;
-		esac
-		TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
-	    if [ -z "$3" != "" ]; then
-	  	  TABLE_PREFIX=$3
-		fi
-		if [ "$4" != "" ]; then
-	  	  DATABASENAME=$4
-		fi
+		   #*)
+			#	TATABLES_SELECTED="${TABLE_PREFIX}${2}"
+			#;;
+		#esac
 
-	;;
+	    
+	#;;
 	-i | --import )    
 		OPERATION="remote-replace-local"
 		DATABASENAME=$DEFAULT_DATABASE
@@ -70,6 +65,14 @@ case "$1" in
    	source mysql-saudations/end.sh
    ;;
 esac
+if [ -z "$2" != "" ]; then
+	  TABLE_PREFIX=$2
+fi
+if [ "$3" != "" ]; then
+	  DATABASENAME=$3
+fi
+TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
+OPERATION="local-replace-remote"
 echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX, ser=$SERVICENUMBER"
 source mysql-commands/table-generator.sh
 source mysql-operations/$OPERATION.sh
