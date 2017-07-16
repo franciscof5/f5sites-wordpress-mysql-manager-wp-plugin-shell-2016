@@ -10,7 +10,7 @@ echo "4 - Compare Content - From table inside databases"
 echo "5 - Compare Structure - From table inside databases"
 echo " BACKUP"
 echo "7 - Local Export - Dump to a backup folder"
-echo "8 - Remote Export and Download - (in development)"
+#echo "8 - Remote Export and Download - (in development)"
 echo " QUIT"
 echo "9 - Quit - exit F5 Sites WordPress MySQL Manager"
 read OPERATION
@@ -43,7 +43,7 @@ case "$OPERATION" in
 	echo "2 - Enter advanced instructions"
 	read DIRECT
 	if [ "$DIRECT" = "1" ]; then
-		source mysql-commands/local-backup-all-dbs.sh
+		source mysql-operations/local-backup-all-dbs.sh
       source start.sh
 		#exit
 	#else

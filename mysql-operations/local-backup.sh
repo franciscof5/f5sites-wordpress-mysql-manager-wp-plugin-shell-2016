@@ -8,7 +8,7 @@ read PROCEED
 case "$PROCEED" in
    "1")	echo "Selected 1 - Dumping all copys of local databases to $LOCAL_BACKUP_DIR..."
    exit
-	source mysql-commands/local-backup-all-dbs.sh
+	source mysql-operations/local-backup-all-dbs.sh
    ;;
    "2") echo "Selected 2 - Select database" 
    	exit

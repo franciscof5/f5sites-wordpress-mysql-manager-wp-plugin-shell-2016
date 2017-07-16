@@ -5,9 +5,9 @@ source mysql-commands/load-config.sh
 
 DATABASENAME=$DEFAULT_DATABASE
 TABLE_PREFIX=$DEFAULT_TABLE_PREFIX
+TABLES_SELECTED_ENTERED=""
 TABLES_SELECTED_FOR_DUMP_LINE=""
-TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
-SERVICENUMBER
+SERVICENUMBER=""
 case "$1" in
    -a | --auto) echo "Selected 1 - Auto Sync" 
    	OPERATION="auto-sync"
@@ -16,28 +16,32 @@ case "$1" in
 	    OPERATION="local-replace-remote"
 	    case "$2" in
 		   --all) echo "All Database: $DATABASENAME (all tables, ignoring table prefix previous entered)"
-				$SERVICENUMBER
-		   	#OPERATION="auto-sync"
+				$SERVICENUMBER=1
 		   ;;
 		   --prefixed) echo "Prefixed: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
-		   	#OPERATION="auto-sync"
-		   ;;
-		   --posts) echo "Posts - ${TABLE_PREFIX}posts"
-		   	#OPERATION="auto-sync"
-		   ;;
-		   --options) echo "Options - ${TABLE_PREFIX}options"
-		   	#OPERATION="auto-sync"
+		   		$SERVICENUMBER=2
 		   ;;
 		   --posts-and-tax) echo "WordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
-		   	#OPERATION="auto-sync"
+		   		$SERVICENUMBER=3
 		   ;;
+		   --posts) echo "Posts - ${TABLE_PREFIX}posts"
+		   		$SERVICENUMBER=4
+		   ;;
+		   --options) echo "Options - ${TABLE_PREFIX}options"
+		   		$SERVICENUMBER=5
+		   ;;
+		   *)
+				TATABLES_SELECTED="${TABLE_PREFIX}${2}"
+			;;
 		esac
+		TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
 	    if [ -z "$3" != "" ]; then
 	  	  TABLE_PREFIX=$3
 		fi
 		if [ "$4" != "" ]; then
 	  	  DATABASENAME=$4
 		fi
+
 	;;
 	-i | --import )    
 		OPERATION="remote-replace-local"
@@ -47,7 +51,7 @@ case "$1" in
    	OPERATION="compare-content"
    ;;
    -b | --backup) echo "Selected - Backup" 
-	OPERATION="backup"
+	OPERATION="local-backup-all-dbs"
    	#source mysql-commands/local-backup-all-dbs.sh
    ;;
    -w | --wizard) echo "Wizard" 
@@ -66,6 +70,6 @@ case "$1" in
    	source mysql-saudations/end.sh
    ;;
 esac
-echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX"
-#source mysql-commands/generate-tables.sh
-#source mysql-operations/$OPERATION.sh
+echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX, ser=$SERVICENUMBER"
+source mysql-commands/table-generator.sh
+source mysql-operations/$OPERATION.sh
