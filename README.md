@@ -1,10 +1,18 @@
-F5 Sites | WordPress MySQL Manager
+# F5 Sites | WordPress MySQL Manager
+wpsql-cli provides an easy way to manage and speed-up WordPress development process by shortining WordPress SQL data management tasks
 
+Simple usage examples
+```
+wpsql-cli --manual --export
+```
+```
+wpsql-cli -a
+```
 Official Website: f5sites.com/wordpress-mysql-manager
 
 Developd by: Francisco Matelli Matulovic - franciscomat.com
 
-DESCRIPTION
+## Description
 
 WordPress MySQL Manager was designed to speedup wordpress data sync between wordpress servers instances, respecting WordPress original data model.
 
@@ -14,10 +22,10 @@ AUTO SYNC POSTS - TWO WAYS
 
 You can check what server has the highest WordPress post ID and then automatically sync them (export, compact, download/upload, extract, safe copy, mysql import) usually server configurations is based on a master and slave replication schema, based on commits, but that sometimes can be frustraint for wordpress developers that use other logic for data management, eg. you can make changes on dev server while receiving only new posts from production server (for better knowing if you download all data from production server, wordpress will overwrite all data, posts and local changes, with auto sync posts you can always preserve server configuration).
 
-A) CONFIGURATION
+### A) CONFIGURATION
 You can use a default value for databasename + table prefix, but for many server configuration it varies.
 
-B) USAGE
+### B) USAGE
 
 1 - First change settings in config-example.sh and rename it to config.sh
 
@@ -25,6 +33,6 @@ B) USAGE
 
 3 - The wizard will guide you
 
-B) NOTES
+### C) NOTES
 
 Composer ready! It came across with composer json settings file
