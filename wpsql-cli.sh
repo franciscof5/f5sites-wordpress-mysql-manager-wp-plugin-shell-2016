@@ -1,5 +1,13 @@
 #!/bin/bash
+source mysql-saudations/hello.sh
+
+source mysql-commands/load-config.sh
+
 DATABASENAME=$DEFAULT_DATABASE
+TABLE_PREFIX=$DEFAULT_TABLE_PREFIX
+TABLES_SELECTED_FOR_DUMP_LINE=""
+TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
+SERVICENUMBER
 case "$1" in
    -a | --auto) echo "Selected 1 - Auto Sync" 
    	OPERATION="auto-sync"
@@ -8,6 +16,7 @@ case "$1" in
 	    OPERATION="local-replace-remote"
 	    case "$2" in
 		   --all) echo "All Database: $DATABASENAME (all tables, ignoring table prefix previous entered)"
+				$SERVICENUMBER
 		   	#OPERATION="auto-sync"
 		   ;;
 		   --prefixed) echo "Prefixed: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
@@ -23,7 +32,7 @@ case "$1" in
 		   	#OPERATION="auto-sync"
 		   ;;
 		esac
-	    if [ "$3" != "" ]; then
+	    if [ -z "$3" != "" ]; then
 	  	  TABLE_PREFIX=$3
 		fi
 		if [ "$4" != "" ]; then
@@ -58,3 +67,5 @@ case "$1" in
    ;;
 esac
 echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX"
+#source mysql-commands/generate-tables.sh
+#source mysql-operations/$OPERATION.sh
