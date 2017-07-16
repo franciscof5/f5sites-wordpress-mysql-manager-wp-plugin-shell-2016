@@ -3,14 +3,29 @@ wpsql-cli provides an easy way to manage and speed-up WordPress development proc
 
 Usage examples:
 ```
-wpsql-cli --export --posts-and-tax wp_custom_prefix_
-wpsql-cli -e --all
-wpsql-cli --auto --posts
-wpsql-cli --compare --option wp_another_prefix_ database2
+wpsql-cli --posts-and-tax
+wpsql-cli --options wp_prefix_
+wpsql-cli --posts wp_prefix_ database2
+wpsql-cli --auto
+wpsql-cli --compare wp_another_prefix_ database3
 wpsql-cli --backup
 wpsql-cli --wizard
 wpsql-cli --help
 ```
+Commands list
+*. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
+*. --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
+*. --posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)
+*. --posts        : posts tables - ${TABLE_PREFIX}posts
+*. --options      : options table - ${TABLE_PREFIX}options
+*. --name         : prompt for user to enter custom tables separated by commas
+*. -a | --auto    : auto sync between servers instances by highest wp post_id on selected table
+*. -i | --import  : import from remote (probably production) to local (probably dev)
+*. -c | --compare : compare sql tables structure (diff) (ignores data)
+*. -b | --backup  : just perfom a backup
+*. -w | --wizard  : to run a step-by-step wizard
+*. -h | --help    : help text"
+		
 Official Website: [F5 Sites WordPress MySQL Manager](https:www.f5sites.com/wordpress-mysql-manager) 
 
 Developd by: [Francisco Matelli Matulovic](https://www.franciscomat.com)
