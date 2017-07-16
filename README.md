@@ -25,6 +25,36 @@ You can check what server has the highest WordPress post ID and then automatical
 ### A) CONFIGURATION
 You can use a default value for databasename + table prefix, but for many server configuration it varies.
 
+Detaulf configurable vars
+```
+MYSQL_USER_LOCAL=""
+MYSQL_PASS_LOCAL=""
+#
+SSH_USER=""
+SSH_PASS=""
+IP="1.1.1.1"
+#
+MYSQL_USER_REMOTE=""
+MYSQL_PASS_REMOTE=""
+#
+LOCAL_BACKUP_DIR=/backup
+LOCAL_TEMP_DIR=/tmp
+LOCAL_SAFE_COPY_DIR=/backup
+REMOTE_BACKUP_DIR=/backup
+REMOTE_TEMP_DIR=/tmp
+REMOTE_SAFE_COPY_DIR=/backup
+#
+DEFAULT_DATABASE="wordpress"
+DETAULT_TABLE_PREFIX="wp_"
+# mysdump option, comment to remove option when dumping https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+LOCKTABLES=" --lock-tables=false "
+DATABASES=" --databases"
+DROPDB=" --add-drop-database "
+CARACHTER=" --default-character-set=utf8 "
+COMPA_M4=" --compatible=mysql4 "
+COMPA_NT=" --compatible=no_table_options"
+```
+
 ### B) USAGE
 
 1 - First change settings in config-example.sh and rename it to config.sh
