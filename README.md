@@ -19,6 +19,8 @@ Developd by: [Francisco Matelli Matulovic](https://www.franciscomat.com)
 
 WordPress MySQL Manager was designed to speedup wordpress data sync between wordpress servers instances, respecting WordPress original data model.
 
+![Basic Diagram](https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/eeeba0f9/wpsql-cli-basic-diagram.svg)
+
 At the time it can be configured for 2 servers instances only, eg. development and production server. They connect trought SSH and use MySQL worpress special queries to sync data respecting WordPress original data model, you can sync only posts related content or just wp_options tables.
 
 #### Exclusive feature: WordPress Posts Table Auto Sync (two ways)
@@ -89,8 +91,5 @@ What operation you need?
 ### D) NOTES
 
 Composer ready! It came across with composer json settings file
-
-![Alt text](https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/eeeba0f9/wpsql-cli-basic-diagram.svg)
-<img src="https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/eeeba0f9/wpsql-cli-basic-diagram.svg">
 
 
