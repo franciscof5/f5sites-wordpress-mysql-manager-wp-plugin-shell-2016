@@ -1,22 +1,39 @@
 #!/bin/bash
+DATABASENAME=$DEFAULT_DATABASE
 case "$1" in
    -a | --auto) echo "Selected 1 - Auto Sync" 
    	OPERATION="auto-sync"
    ;;
-   #-m | --manual) echo "Selected - Manual Sync"
-	#while [ "$2" != "" ]; do
-	    #case $2 in
-	        -e | --export )
-	            OPERATION="local-replace-remote"
-	        ;;
-	        -i | --import )    
-				OPERATION="remote-replace-local"
-	        ;;
-	    #esac
-	    
-	#done
-   	#source mysql-prompts/get-tables-complement.sh
-   #;;
+	-e | --export )
+	    OPERATION="local-replace-remote"
+	    case "$2" in
+		   --all) echo "All Database: $DATABASENAME (all tables, ignoring table prefix previous entered)"
+		   	#OPERATION="auto-sync"
+		   ;;
+		   --prefixed) echo "Prefixed: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
+		   	#OPERATION="auto-sync"
+		   ;;
+		   --posts) echo "Posts - ${TABLE_PREFIX}posts"
+		   	#OPERATION="auto-sync"
+		   ;;
+		   --options) echo "Options - ${TABLE_PREFIX}options"
+		   	#OPERATION="auto-sync"
+		   ;;
+		   --posts-and-tax) echo "WordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
+		   	#OPERATION="auto-sync"
+		   ;;
+		esac
+	    if [ "$3" != "" ]; then
+	  	  TABLE_PREFIX=$3
+		fi
+		if [ "$4" != "" ]; then
+	  	  DATABASENAME=$4
+		fi
+	;;
+	-i | --import )    
+		OPERATION="remote-replace-local"
+		DATABASENAME=$DEFAULT_DATABASE
+	;;
    -c | --compare) echo "Selected 1 - Auto Sync" 
    	OPERATION="compare-content"
    ;;
@@ -40,4 +57,4 @@ case "$1" in
    	source mysql-saudations/end.sh
    ;;
 esac
-echo "Op = $OPERATION"
+echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX"
