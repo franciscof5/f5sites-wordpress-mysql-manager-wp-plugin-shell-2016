@@ -1,6 +1,6 @@
 # F5 Sites | WordPress MySQL Manager
 
-[![GitHub version](https://img.shields.io/badge/wordpress--plugin-dev-green.svg)](https://img.shields.io/badge/wordpress--plugin-dev-green.svg) 
+[![GitHub version](https://img.shields.io/badge/wordpress--plugin-dev-green.svg)](https://img.shields.io/badge/wordpress--plugin-dev-red.svg) 
 [![GitHub version](https://img.shields.io/badge/shell--script-dev-red.svg)](https://img.shields.io/badge/shell--script-dev-red.svg) 
 [![GitHub version](https://img.shields.io/badge/wpackgist-ready-green.svg)](https://img.shields.io/badge/composer-ready-green.svg)
 
