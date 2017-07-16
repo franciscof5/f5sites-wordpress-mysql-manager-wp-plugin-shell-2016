@@ -60,9 +60,9 @@ COMPA_NT=" --compatible=no_table_options"
 
 ### B) USAGE
 
-1 - First change settings in config-example.sh and rename it to config.sh
+1. First change settings in config-example.sh and rename it to config.sh
 
-2 - Open terminal in that folder and run the command wpsql-cli
+2. Open terminal in that folder and run the command wpsql-cli
 
 ### C) STEP-BY-STEP WIZARD
 For a different approach than command line you can run the wizard just by
@@ -89,3 +89,8 @@ What operation you need?
 ### D) NOTES
 
 Composer ready! It came across with composer json settings file
+
+
+![Basic Diagram](wpsql-cli-basic-diagram.svg)
+Format: ![Basic Diagram](url)
+
