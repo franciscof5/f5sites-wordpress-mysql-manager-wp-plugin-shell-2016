@@ -20,7 +20,7 @@ WordPress MySQL Manager was designed to speedup wordpress data sync between word
 
 At the time it can be configured for 2 servers instances only, eg. development and production server. They connect trought SSH and use MySQL worpress special queries to sync data respecting WordPress original data model, you can sync only posts related content or just wp_options tables.
 
-### Exclusive feature: WordPress Posts Table Auto Sync (two ways)
+#### Exclusive feature: WordPress Posts Table Auto Sync (two ways)
 
 You can check what server has the highest WordPress post ID and then automatically sync them (export, compact, download/upload, extract, safe copy, mysql import) usually server configurations is based on a master and slave replication schema, based on commits, but that sometimes can be frustraint for wordpress developers that use other logic for data management, eg. you can make changes on dev server while receiving only new posts from production server (for better knowing if you download all data from production server, wordpress will overwrite all data, posts and local changes, with auto sync posts you can always preserve server configuration).
 
