@@ -98,7 +98,7 @@ Format: ![Basic Diagram](url)
 ![Alt text](https://rawgithub.com/potherca/StackOverflow/gh-pages/question.13808020.include-an-svg-hosted-on-github-in-markdown/controllers_brief.svg)
 <img src="https://rawgithub.com/potherca/StackOverflow/gh-pages/question.13808020.include-an-svg-hosted-on-github-in-markdown/controllers_brief.svg">
 
-![Alt text](https://github.com/franciscof5/wordpress-mysql-manager/blob/master/wpsql-cli-basic-diagram.svg)
-<img src="https://github.com/franciscof5/wordpress-mysql-manager/blob/master/wpsql-cli-basic-diagram.svg">
+![Alt text](https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/ff860cc9/wpsql-cli-basic-diagram.svg)
+<img src="https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/ff860cc9/wpsql-cli-basic-diagram.svg">
 
 
