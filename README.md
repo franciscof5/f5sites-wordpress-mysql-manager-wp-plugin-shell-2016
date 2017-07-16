@@ -90,7 +90,7 @@ What operation you need?
 
 Composer ready! It came across with composer json settings file
 
-![Alt text](https://rawgit.com/franciscof5/wordpress-mysql-manager/master/wpsql-cli-basic-diagram.svg)
-<img src="https://rawgit.com/franciscof5/wordpress-mysql-manager/master/wpsql-cli-basic-diagram.svg">
+![Alt text](https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/eeeba0f9/wpsql-cli-basic-diagram.svg)
+<img src="https://cdn.rawgit.com/franciscof5/wordpress-mysql-manager/eeeba0f9/wpsql-cli-basic-diagram.svg">
 
 
