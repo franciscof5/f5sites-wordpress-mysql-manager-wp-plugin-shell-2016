@@ -3,9 +3,9 @@ wpsql-cli provides an easy way to manage and speed-up WordPress development proc
 
 Simple usage examples
 ```
-wpsql-cli --export
-wpsql-cli --auto
-wpsql-cli --compare
+wpsql-cli --export --posts-and-tax wp_custom_prefix_
+wpsql-cli --auto --posts
+wpsql-cli --compare --option wp_another_prefix_ database2
 wpsql-cli --backup
 wpsql-cli --wizard
 wpsql-cli --help
