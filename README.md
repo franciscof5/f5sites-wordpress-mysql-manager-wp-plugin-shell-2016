@@ -11,9 +11,9 @@ wpsql-cli --backup
 wpsql-cli --wizard
 wpsql-cli --help
 ```
-Official Website: [F5 Sites WordPress Mysql Manager](https:www.f5sites.com/wordpress-mysql-manager) 
+Official Website: [F5 Sites WordPress MySQL Manager](https:www.f5sites.com/wordpress-mysql-manager) 
 
-Developd by: [Francisco Matelli Matulovic](https://www.franciscomat.com)  - 
+Developd by: [Francisco Matelli Matulovic](https://www.franciscomat.com)
 
 ## Description
 
