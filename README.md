@@ -62,10 +62,30 @@ COMPA_NT=" --compatible=no_table_options"
 
 1 - First change settings in config-example.sh and rename it to config.sh
 
-2 - Open terminal in that folder and tip ./start
+2 - Open terminal in that folder and run the command wpsql-cli
 
-3 - The wizard will guide you
+### C) STEP-BY-STEP WIZARD
+For a different approach than command line you can run the wizard just by
+```
+$ wpsql-cli -w
+Load configuration file... (to change it open config.sh)
+What operation you need?
+ AUTO
+1 - Auto Sync - Check for highest post ID
+ MANUAL
+2 - Local to Remote - Replace database
+3 - Remote to Local - Replace database
+ COMPARE
+4 - Compare Content - From table inside databases
+5 - Compare Structure - From table inside databases
+ BACKUP
+7 - Local Export - Dump to a backup folder
+8 - Remote Export and Download - (in development)
+ QUIT
+9 - Quit - exit F5 Sites WordPress MySQL Manager
 
-### C) NOTES
+```
+
+### D) NOTES
 
 Composer ready! It came across with composer json settings file
