@@ -16,7 +16,7 @@ case "$1" in
 	    
 	#done
    	#source mysql-prompts/get-tables-complement.sh
-   ;;
+   #;;
    -c | --compare) echo "Selected 1 - Auto Sync" 
    	OPERATION="compare-content"
    ;;
