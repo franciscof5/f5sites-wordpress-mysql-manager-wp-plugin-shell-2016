@@ -1,5 +1,5 @@
 # F5 Sites | WordPress MySQL Manager
-wpsql-cli provides an easy way to manage and speed-up WordPress development process by shortining WordPress SQL data management tasks
+wpsql-cli provides an easy way to manage and speed-up WordPress development process by shortining WordPress SQL data management tasks. Ideal for multiple wordpress install sharing the same database.
 
 Simple usage examples
 ```
