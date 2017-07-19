@@ -14,7 +14,7 @@ case "$1" in
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=1
 	;;
-	--prefixed) echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
+	--prefix) echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=2
 	;;
@@ -77,6 +77,6 @@ if [ "$3" != "" ]; then
 fi
 #TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
 
-echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX, ser=$SERVICENUMBER"
+echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX, ser=$SERVICENUMBER, 1:$1, 2:$2, 3:$3"
 source mysql-commands/table-generator.sh
 source mysql-operations/$OPERATION.sh
