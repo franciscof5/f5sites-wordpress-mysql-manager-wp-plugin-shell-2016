@@ -3,7 +3,7 @@ source mysql-saudations/hello.sh
 
 source mysql-commands/load-config.sh
 
-OPERATION=""
+OPERATION="loading..."
 DATABASENAME=$DEFAULT_DATABASE
 TABLE_PREFIX=$DEFAULT_TABLE_PREFIX
 TABLES_SELECTED_ENTERED=""
@@ -77,6 +77,6 @@ if [ "$3" != "" ]; then
 fi
 #TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
 
-echo "Op = $OPERATION, db = $DATABASENAME, pref = $TABLE_PREFIX, ser=$SERVICENUMBER, 1:$1, 2:$2, 3:$3"
+echo "Operation $OPERATION, prefix $TABLE_PREFIX, database $DATABASENAME, service $SERVICENUMBER, 1 $1, 2 $2, 3 $3"
 source mysql-commands/table-generator.sh
 source mysql-operations/$OPERATION.sh
