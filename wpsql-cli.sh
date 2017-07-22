@@ -22,9 +22,13 @@ case "$1" in
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=3
 	;;
-	--posts) echo "Posts tables - ${TABLE_PREFIX}posts"
+	--posts) echo "Posts tables"
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=4
+	;;
+	--post-type) echo "Posts type inside posts tables"
+		OPERATION="local-replace-remote"
+		SERVICENUMBER=6
 	;;
 	--options) echo "Options table - ${TABLE_PREFIX}options"
 		OPERATION="local-replace-remote"

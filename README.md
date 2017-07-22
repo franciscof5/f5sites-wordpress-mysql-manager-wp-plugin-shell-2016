@@ -1,4 +1,4 @@
-# F5 Sites | WordPress MySQL Manager
+# F5 Sites | WordPress MySQL Manager (wpsql)
 
 [![GitHub version](https://img.shields.io/badge/wordpress--plugin-dev-green.svg)](https://img.shields.io/badge/wordpress--plugin-dev-red.svg) 
 [![GitHub version](https://img.shields.io/badge/shell--script-dev-red.svg)](https://img.shields.io/badge/shell--script-dev-red.svg) 
@@ -6,13 +6,13 @@
 
 wpsql-cli provides an easy way to manage and speed-up WordPress development process by shortining WordPress SQL data management tasks. Ideal for multiple wordpress installs sharing the same database.
 
-Usage examples:
+Usage examples (after configuration):
 ```
 wpsql-cli --posts-and-tax
-wpsql-cli --options wp_prefix_
-wpsql-cli --posts wp_prefix_ database2
+wpsql-cli --options wp2_
+wpsql-cli --prefix_ wp_ database2
 wpsql-cli --auto
-wpsql-cli --compare wp_another_prefix_ database3
+wpsql-cli --compare wp3_ database3
 wpsql-cli --backup
 wpsql-cli --wizard
 wpsql-cli --help
