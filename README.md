@@ -21,21 +21,18 @@ wpsql --help
 
 ### Commands list
 
-*. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
-
-*. --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
-
-*. --posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)
-
-*. --posts        : posts tables - ${TABLE_PREFIX}posts
-*. --options      : options table - ${TABLE_PREFIX}options
-*. --name         : prompt for user to enter custom tables separated by commas
-*. -a | --auto    : auto sync between servers instances by highest wp post_id on selected table
-*. -i | --import  : import from remote (probably production) to local (probably dev)
-*. -c | --compare : compare sql tables structure (diff) (ignores data)
-*. -b | --backup  : just perfom a backup
-*. -w | --wizard  : to run a step-by-step wizard
-*. -h | --help    : help text
+* --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
+* --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
+* --posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)
+* --posts        : posts tables - ${TABLE_PREFIX}posts
+* --options      : options table - ${TABLE_PREFIX}options
+* --name         : prompt for user to enter custom tables separated by commas
+* -a | --auto    : auto sync between servers instances by highest wp post_id on selected table
+* -i | --import  : import from remote (probably production) to local (probably dev)
+* -c | --compare : compare sql tables structure (diff) (ignores data)
+* -b | --backup  : just perfom a backup
+* -w | --wizard  : to run a step-by-step wizard
+* -h | --help    : help text
 		
 Official Website: [F5 Sites WordPress MySQL Manager](https:www.f5sites.com/wordpress-mysql-manager) 
 
