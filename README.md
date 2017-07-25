@@ -105,7 +105,9 @@ You can check what server has the highest WordPress post ID and then automatical
 
 1. First change settings in config-example.sh and rename it to config.sh
 
-2. Open terminal in that folder and run the command wpsql-cli
+2. Open terminal in that folder and run the command ./wpsql-cli.sh --commandname --tableprefix --databasename
+
+3. If you run ./install.sh you can just open terminal anywhere and run wpsql command with options
 
 ### WIZARD
 For a different approach than command line you can run the wizard just by
