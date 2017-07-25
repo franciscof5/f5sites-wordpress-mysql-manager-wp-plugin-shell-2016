@@ -19,7 +19,7 @@ wpsql --wizard
 wpsql --help
 ```
 
-###Commands list
+### Commands list
 
 *. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
 *. --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
