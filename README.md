@@ -20,9 +20,8 @@ wpsql --help
 ```
 
 ### CONFIGURATION
-You can use a default value for databasename + table prefix, but for many server configuration it varies.
+Default configurable vars. Tip:You can use a default value for database name and table prefix, shortening even more the commands.
 
-Detaulf configurable vars
 ```
 MYSQL_USER_LOCAL=""
 MYSQL_PASS_LOCAL=""
