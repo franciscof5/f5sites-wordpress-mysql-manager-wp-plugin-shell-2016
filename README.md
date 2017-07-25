@@ -8,16 +8,17 @@ wpsql-cli provides an easy way to manage and speed-up WordPress development proc
 
 Usage examples (after configuration):
 ```
-wpsql-cli --posts
-wpsql-cli --posts-and-tax
-wpsql-cli --options wp2_
-wpsql-cli --prefix_ wp_ database2
-wpsql-cli --auto
-wpsql-cli --compare wp3_ database3
-wpsql-cli --backup
-wpsql-cli --wizard
-wpsql-cli --help
+wpsql --posts
+wpsql --posts-and-tax
+wpsql --options wp2_
+wpsql --prefix_ wp_ database2
+wpsql --auto
+wpsql --compare wp3_ database3
+wpsql --backup
+wpsql --wizard
+wpsql --help
 ```
+
 ###Commands list
 
 *. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
