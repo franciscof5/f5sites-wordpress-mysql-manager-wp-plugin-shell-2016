@@ -8,6 +8,7 @@ wpsql-cli provides an easy way to manage and speed-up WordPress development proc
 
 Usage examples (after configuration):
 ```
+wpsql-cli --posts
 wpsql-cli --posts-and-tax
 wpsql-cli --options wp2_
 wpsql-cli --prefix_ wp_ database2
@@ -17,7 +18,8 @@ wpsql-cli --backup
 wpsql-cli --wizard
 wpsql-cli --help
 ```
-Commands list
+###Commands list
+
 *. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
 *. --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
 *. --posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)
@@ -29,7 +31,7 @@ Commands list
 *. -c | --compare : compare sql tables structure (diff) (ignores data)
 *. -b | --backup  : just perfom a backup
 *. -w | --wizard  : to run a step-by-step wizard
-*. -h | --help    : help text"
+*. -h | --help    : help text
 		
 Official Website: [F5 Sites WordPress MySQL Manager](https:www.f5sites.com/wordpress-mysql-manager) 
 
