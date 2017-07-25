@@ -22,8 +22,11 @@ wpsql --help
 ### Commands list
 
 *. --all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)
+
 *. --prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME
+
 *. --posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)
+
 *. --posts        : posts tables - ${TABLE_PREFIX}posts
 *. --options      : options table - ${TABLE_PREFIX}options
 *. --name         : prompt for user to enter custom tables separated by commas
