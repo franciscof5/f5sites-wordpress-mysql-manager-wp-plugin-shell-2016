@@ -33,7 +33,9 @@ At the time it can be configured for 2 servers instances only, eg. development a
 
 
 ### CONFIGURATION
-Default configurable vars. Tip:You can use a default value for database name and table prefix, shortening even more the commands.
+Change default configurable variables and rename config-example.sh to config.sh.
+
+Tip: You can use a default value for database name and table prefix, shortening even more the commands, if you run just one WordPress site it is the best option, or if you are working most of time with one prefixed wp install on some database.
 
 ```
 MYSQL_USER_LOCAL=""
