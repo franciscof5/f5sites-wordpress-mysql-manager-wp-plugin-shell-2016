@@ -1,5 +1,5 @@
 {
-	"name": "f5sites/mysql-manager",
+	"name": "f5sites/f5sites-wordpress-mysql-manager",
 	"description": "WordPress MySQL Manager was designed to speedup wordpress data sync between wordpress servers instances, respecting WordPress original data model.",
 	"type": "f5sites-servers",
 	"authors": [
