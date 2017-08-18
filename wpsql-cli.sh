@@ -14,7 +14,7 @@ case "$1" in
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=1
 	;;
-	--prefix) echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
+	--prefixed) echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=2
 	;;
@@ -38,12 +38,20 @@ case "$1" in
 		OPERATION="local-replace-remote"
 		SERVICENUMBER=9
 	;;
+	-ia | --import-all )
+		OPERATION="remote-replace-local"
+		SERVICENUMBER=1
+		echo "not working... end"
+		exit
+	;;
+	-ip | --import-prefixed )
+		OPERATION="remote-replace-local"
+		SERVICENUMBER=2
+		echo "not working... end"
+		exit
+	;;
 	-a | --auto) echo "Selected 1 - Auto Sync" 
 		OPERATION="auto-sync"
-	;;
-	-i | --import )
-		OPERATION="remote-replace-local"
-		DATABASENAME=$DEFAULT_DATABASE
 	;;
 	-c | --compare) echo "Selected 1 - Auto Sync" 
 		OPERATION="compare-content"
@@ -57,14 +65,15 @@ case "$1" in
 	;;
 	-h | --help) echo "HELP"
 		echo "Commands lists:"
-		echo "--all          : all tables: $DATABASENAME (all tables, ignoring table prefix previous entered)"
+		echo "--all          : all tables"
 		echo "--prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
 		echo "--posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
 		echo "--posts        : posts tables - ${TABLE_PREFIX}posts"
 		echo "--options      : options table - ${TABLE_PREFIX}options"
 		echo "--name         : prompt for user to enter custom tables separated by commas"
+		echo "--import-all      : import from remote (probably production) to local (probably dev), all tables"
+		echo "--import-prefixed : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
 		echo "-a | --auto    : auto sync between servers instances by highest wp post_id on selected table"
-		echo "-i | --import  : import from remote (probably production) to local (probably dev)"
 		echo "-c | --compare : compare sql tables structure (diff) (ignores data)"
 		echo "-b | --backup  : just perfom a backup"
 		echo "-w | --wizard  : to run a step-by-step wizard"
