@@ -47,8 +47,8 @@ case "$1" in
 	-ip | --import-prefixed )
 		OPERATION="remote-replace-local"
 		SERVICENUMBER=2
-		echo "not working... end"
-		exit
+		#echo "not working... end"
+		#exit
 	;;
 	-a | --auto) echo "Selected 1 - Auto Sync" 
 		OPERATION="auto-sync"
