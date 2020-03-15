@@ -14,7 +14,8 @@ echo "7 - Local Export - Dump to a backup folder"
 echo "QUIT"
 echo "9 - Quit - exit F5 Sites WordPress MySQL Manager"
 echo "TEST CONNECTION"
-echo "10 - Test SSH connection & MySQL connection"
+echo "10 - Remote test - SSH connection & MySQL connection"
+echo "11 - Local test - MySQL connection"
 read OPERATION
 
 case "$OPERATION" in
@@ -60,6 +61,9 @@ case "$OPERATION" in
    ;;
    "10") echo "Testing connections..." 
    	source mysql-commands/remote-test-connect.sh
+   ;;
+   "11") echo "Testing connections..." 
+   	source mysql-commands/local-test-connect.sh
    ;;
 esac
 
