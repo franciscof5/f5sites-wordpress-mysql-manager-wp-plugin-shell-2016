@@ -6,5 +6,6 @@ then
 	echo "$file found."
 	source config.sh
 else
-	echo "Create a config.sh file, not foud"
+	echo "$file not found."
+	echo "You must create a config.sh file before install, please check README on root folder"
 fi
