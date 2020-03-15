@@ -88,8 +88,12 @@ fi
 if [ "$3" != "" ]; then
 	  DATABASENAME=$3
 fi
-#TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
 
-echo "Operation $OPERATION, prefix $TABLE_PREFIX, database $DATABASENAME, service $SERVICENUMBER, 1 $1, 2 $2, 3 $3"
+if [ "$1" == "" ] && [ "$2" == "" ] && [ "$3" == "" ];then
+	echo "Wizard started"
+	source wizard.sh
+else 
+	echo "Operation $OPERATION, prefix $TABLE_PREFIX, database $DATABASENAME, service $SERVICENUMBER, 1 $1, 2 $2, 3 $3"
 source mysql-commands/table-generator.sh
 source mysql-operations/$OPERATION.sh
+fi
