@@ -8,7 +8,7 @@ case "$SERVICENUMBER" in
    "2") echo "Selected prefixed tables"
    	#GET TABLES TO A FILE
    	echo "select table_name from tables where table_schema = '$DATABASENAME' and table_name like '${TABLE_PREFIX}%'"
-   	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -N information_schema -e "select table_name from tables where table_schema = '$DATABASENAME' and table_name like '${TABLE_PREFIX}%'" > $LOCAL_TEMP_DIR/tables.txt 
+   	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL -P $MYSQL_PORT_LOCAL -N information_schema -e "select table_name from tables where table_schema = '$DATABASENAME' and table_name like '${TABLE_PREFIX}%'" > $LOCAL_TEMP_DIR/tables.txt 
    	#$TABLES_SELECTED_FOR_DUMP_LINE="`cat tables.txt`"
    	TABLES_SELECTED_FOR_DUMP_LINE=""
    	while read line; do 
