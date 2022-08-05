@@ -19,6 +19,7 @@ test -d "$LOCAL_BACKUP_DIR/d-0" || mkdir -p "$LOCAL_BACKUP_DIR/d-0"
 	  # dump each database in a separate file
 	  mysqldump -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL --lock-tables=false "$db" | gzip > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
 	done
+	echo -e "Subject: daily backup on prod (linod) \n\n operation successfull at ($date) at $hostname" | ssmtp -v fmatelli@gmail.com
 #else
 	exit
 #fi
