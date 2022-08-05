@@ -60,6 +60,10 @@ case "$1" in
 	OPERATION="local-backup-all-dbs"
 		#source mysql-commands/local-backup-all-dbs.sh
 	;;
+	-b-daily | --backup-daily) echo "Selected - Backup Daily" 
+	OPERATION="local-daily-backup-all-dbs"
+		#source mysql-commands/local-backup-all-dbs.sh
+	;;
 	-w | --wizard) echo "Wizard" 
 		source wizard.sh
 	;;
