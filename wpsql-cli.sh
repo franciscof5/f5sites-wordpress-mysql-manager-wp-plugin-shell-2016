@@ -47,8 +47,6 @@ case "$1" in
 	-ip | --import-prefixed )
 		OPERATION="remote-replace-local"
 		SERVICENUMBER=2
-		#echo "not working... end"
-		#exit
 	;;
 	-a | --auto) echo "Selected 1 - Auto Sync" 
 		OPERATION="auto-sync"
@@ -60,9 +58,8 @@ case "$1" in
 	OPERATION="local-backup-all-dbs"
 		#source mysql-commands/local-backup-all-dbs.sh
 	;;
-	-b-daily | --backup-daily) echo "Selected - Backup Daily" 
-	OPERATION="local-daily-backup-all-dbs"
-		#source mysql-commands/local-backup-all-dbs.sh
+	-daily-b | --daily-backup) echo "Selected - Backup Daily" 
+	OPERATION="daily-local-backup-all-dbs"
 	;;
 	-w | --wizard) echo "Wizard" 
 		source wizard.sh
