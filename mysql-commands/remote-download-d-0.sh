@@ -14,6 +14,7 @@ cd $LOCAL_TEMP_DIR/d-0
 echo "for f in $LOCAL_TEMP_DIR/d-0/* ; do"
 for f in * ; do 
 	echo "Importing < $f";
+	echo "mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL -P $MYSQL_PORT_LOCAL";
 	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL -P $MYSQL_PORT_LOCAL "${f:0:-4}" < $f
 done
 
