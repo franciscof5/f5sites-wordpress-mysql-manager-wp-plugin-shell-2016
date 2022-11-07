@@ -1,6 +1,6 @@
 echo "remote-download-d-0"
-echo "Downloading backup d-0 database from $LOCAL_BACKUP_DIR/d-0 to: $LOCAL_TEMP_DIR..."
 echo "rm -rf $LOCAL_TEMP_DIR/d-0"
+echo "scp -r $SSH_USER@$IP:"$REMOTE_BACKUP_DIR/d-0" $LOCAL_TEMP_DIR/"
 rm -rf $LOCAL_TEMP_DIR/d-0
 echo "scp -r $SSH_USER@$IP:"$REMOTE_BACKUP_DIR/d-0" $LOCAL_TEMP_DIR/"
 scp -r $SSH_USER@$IP:"$REMOTE_BACKUP_DIR/d-0" $LOCAL_TEMP_DIR/
