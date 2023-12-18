@@ -9,11 +9,6 @@ then
 	rm -rf $LOCAL_TEMP_DIR/d-0/mysql.sql.gz
 	rm -rf $LOCAL_TEMP_DIR/d-0/sys.sql.gz
 	rm -rf $LOCAL_TEMP_DIR/d-0/performance_schema.sql.gz
-	rm -rf $LOCAL_BACKUP_DIR/d-2
-	mv $LOCAL_BACKUP_DIR/d-1 $LOCAL_BACKUP_DIR/d-2
-	mv $LOCAL_BACKUP_DIR/d-0 $LOCAL_BACKUP_DIR/d-1
-	rm -rf $LOCAL_BACKUP_DIR/d-0
-	mkdir $LOCAL_BACKUP_DIR/d-0
 	cp -r * $LOCAL_BACKUP_DIR/d-0
 	echo "gunzip -fv $LOCAL_TEMP_DIR/d-0/*"
 	gunzip -fv $LOCAL_TEMP_DIR/d-0/*
