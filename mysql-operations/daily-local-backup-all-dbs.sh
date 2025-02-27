@@ -16,9 +16,15 @@ do
 	# dump each database in a separate file
 	echo "Backing up: $db ..."
 
+	START=$(date +%s)
+
 	#para Innodb (atual, 2025)
 	mysqldump -u "$MYSQL_USER_LOCAL" --password="$MYSQL_PASS_LOCAL" -h "$MYSQL_HOST_LOCAL" -P "$MYSQL_PORT_LOCAL" --single-transaction --quick --max-allowed-packet=512M "$db" | pigz > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
 	
+	END=$(date +%s)
+
+	echo "Backup de $db concluído em $((END - START)) segundos."
+
 	#para MyIsan (old)
 	#mysqldump -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL --lock-tables=false "$db" | gzip > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
 
