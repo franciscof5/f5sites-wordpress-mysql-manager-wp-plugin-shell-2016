@@ -3,9 +3,6 @@ echo "What operation you need?"
 echo " TEST CONNECTION"
 echo "1 - Local test - MySQL connection"
 echo "2 - Remote test - SSH connection & MySQL connection"
-echo " BACKUP"
-echo "3 - Local to Remote - Replace database"
-echo "4 - Remote to Local - Replace database"
 echo " CUSTOM WP DUMP"
 echo "5 - Custom local export"
 echo "6 - Compare content" 
@@ -22,24 +19,17 @@ case "$OPERATION" in
    	source mysql-commands/remote-test-connect.sh
    ;;
    #
-   "3") echo "Selected 3 - Local to Remote" 
-   	OPERATION="local-replace-remote"
-   ;;
-   "4") echo "Selected 4 - Remote to Local" 
-   	OPERATION="remote-replace-local"
-   ;;
-   #
    "5") echo "Selected 5 - Local backup all(dump)" 
 	echo "1 - Quick export all database zipped to a folder"
    echo "($LOCAL_BACKUP_DIR)"
 	echo "2 - Enter advanced instructions"
 	read DIRECT
 	if [ "$DIRECT" = "1" ]; then
-		source mysql-operations/local-backup-all-dbs.sh
+  	   OPERATION="local-backup"
+		# source mysql-operations/local-backup-all-dbs.sh
       #source start.sh
 		#exit
 	#else
-	#   	OPERATION="local-backup"
 	fi
    	#source mysql-commands/local-backup-all-dbs.sh
    	#source start.sh

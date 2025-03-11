@@ -12,7 +12,12 @@ source mysql-prompts/get-table-prefix.sh
 
 source mysql-prompts/get-tables-complement.sh
 
-source mysql-operations/$OPERATION.sh
+if [ -f "mysql-operations/$OPERATION.sh" ]; then
+    source mysql-operations/$OPERATION.sh
+else
+    echo "Error: Operation script not found -> mysql-operations/$OPERATION.sh"
+    exit 1
+fi
 
 source start.sh
 
