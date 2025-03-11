@@ -1,103 +1,110 @@
 #!/bin/bash
-source mysql-saudations/hello.sh
 
+# Carregar configurações e saudações
+source mysql-saudations/hello.sh
 source mysql-commands/load-config.sh
 
+# Variáveis padrão
 OPERATION="loading..."
 DATABASENAME=$DEFAULT_DATABASE
 TABLE_PREFIX=$DEFAULT_TABLE_PREFIX
-TABLES_SELECTED_ENTERED=""
-TABLES_SELECTED_FOR_DUMP_LINE=""
-SERVICENUMBER=""
+
+# Processar argumentos
 case "$1" in
-	--all) echo "All tables: $DATABASENAME (all tables, ignoring table prefix previous entered)"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=1
-	;;
-	--prefixed) echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=2
-	;;
-	--posts-and-tax) echo "WordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=3
-	;;
-	--posts) echo "Posts tables"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=4
-	;;
-	--post-type) echo "Posts type inside posts tables"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=6
-	;;
-	--options) echo "Options table - ${TABLE_PREFIX}options"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=5
-	;;
-	--name) echo "Custom tables"
-		OPERATION="local-replace-remote"
-		SERVICENUMBER=9
-	;;
-	-ia | --import-all )
-		OPERATION="remote-replace-local"
-		SERVICENUMBER=1
-		echo "not working... end"
-		exit
-	;;
-	-ip | --import-prefixed )
-		OPERATION="remote-replace-local"
-		SERVICENUMBER=2
-	;;
-	-a | --auto) echo "Selected 1 - Auto Sync" 
-		OPERATION="auto-sync"
-	;;
-	-c | --compare) echo "Selected 1 - Auto Sync" 
-		OPERATION="compare-content"
-	;;
-	-b | --backup) echo "Selected - Backup" 
-	OPERATION="local-backup-all-dbs"
-		#source mysql-commands/local-backup-all-dbs.sh
-	;;
-	-db | --daily-backup) echo "Selected - Daily Backup" 
-	OPERATION="daily-local-backup-all-dbs"
-	;;
-	-dr | --daily-replace) echo "Selected - Daily Replace" 
-	OPERATION="daily-remote-replace-local"
-	;;
-	-w | --wizard) echo "Wizard" 
-		source wizard.sh
-	;;
-	-h | --help) echo "HELP"
-		echo "Commands lists:"
-		echo "--all          : all tables"
-		echo "--prefixed     : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
-		echo "--posts-and-tax: wordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
-		echo "--posts        : posts tables - ${TABLE_PREFIX}posts"
-		echo "--options      : options table - ${TABLE_PREFIX}options"
-		echo "--name         : prompt for user to enter custom tables separated by commas"
-		echo "--import-all      : import from remote (probably production) to local (probably dev), all tables"
-		echo "--import-prefixed : prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
-		echo "-a | --auto    : auto sync between servers instances by highest wp post_id on selected table"
-		echo "-c | --compare : compare sql tables structure (diff) (ignores data)"
-		echo "-b | --backup  : just perfom a backup"
-		echo "-w | --wizard  : to run a step-by-step wizard"
-		echo "-h | --help    : help text"
-		echo "Don't forget to config it, for detailed instructions see readme.MD"
-		source mysql-saudations/end.sh
-	;;
+    -db | --daily-backup)
+        echo "Selected - Daily Backup"
+        OPERATION="daily-local-backup-all-dbs"
+        ;;
+    -dr | --daily-replace)
+        echo "Selected - Daily Replace"
+        OPERATION="daily-remote-replace-local"
+        ;;
+    --all)
+        echo "All tables: $DATABASENAME (all tables, ignoring table prefix previous entered)"
+        OPERATION="local-dump"
+        ;;
+    --prefixed)
+        echo "Prefixed tables: only tables with prefix $TABLE_PREFIX inside database $DATABASENAME"
+        OPERATION="local-dump"
+        ;;
+    --posts-and-tax)
+        echo "WordPress posts tables (${TABLE_PREFIX}posts, ${TABLE_PREFIX}postmeta, ${TABLE_PREFIX}termmeta, ${TABLE_PREFIX}terms, ${TABLE_PREFIX}term_relationships, ${TABLE_PREFIX}term_taxonomy) (Best choice for auto-sync)"
+        OPERATION="local-dump"
+        ;;
+    --posts)
+        echo "Posts tables"
+        OPERATION="local-dump"
+        ;;
+    --post-type)
+        echo "Posts type inside posts tables"
+        OPERATION="local-dump"
+        ;;
+    --options)
+        echo "Options table - ${TABLE_PREFIX}options"
+        OPERATION="local-dump"
+        ;;
+    --name)
+        echo "Custom tables"
+        OPERATION="local-dump"
+        ;;
+    -ia | --import-all)
+        OPERATION="remote-replace-local"
+        echo "not working... end"
+        exit
+        ;;
+    -ip | --import-prefixed)
+        OPERATION="remote-replace-local"
+        ;;
+    -a | --auto)
+        echo "Selected 1 - Auto Sync"
+        OPERATION="auto-sync"
+        ;;
+    -c | --compare)
+        echo "Selected - Compare Content"
+        OPERATION="compare-content"
+        ;;
+    -b | --backup)
+        echo "Selected - Backup"
+        OPERATION="local-backup-all-dbs"
+        ;;
+    -w | --wizard)
+        echo "Wizard"
+        source wizard.sh
+        exit
+        ;;
+    -h | --help)
+        echo "HELP"
+        echo "Commands list:"
+        echo "--all          : all tables"
+        echo "--prefixed     : tables with prefix $TABLE_PREFIX in $DATABASENAME"
+        echo "--posts-and-tax: WordPress posts tables"
+        echo "--posts        : posts tables - ${TABLE_PREFIX}posts"
+        echo "--options      : options table - ${TABLE_PREFIX}options"
+        echo "--name         : custom tables"
+        echo "--import-all      : import all tables from remote to local"
+        echo "--import-prefixed : import prefixed tables"
+        echo "-a | --auto    : auto sync"
+        echo "-c | --compare : compare table structure"
+        echo "-b | --backup  : perform a backup"
+        echo "-w | --wizard  : step-by-step wizard"
+        echo "-h | --help    : show help"
+        source mysql-saudations/end.sh
+        exit
+        ;;
 esac
-if [ "$2" != "" ]; then
-	  TABLE_PREFIX=$2
-fi
-if [ "$3" != "" ]; then
-	  DATABASENAME=$3
+
+# Sobrescrever prefixo e banco de dados se fornecidos
+[ -n "$2" ] && TABLE_PREFIX=$2
+[ -n "$3" ] && DATABASENAME=$3
+
+# Se nenhum argumento for passado, iniciar o assistente
+if [ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ]; then
+    echo "Wizard started"
+    source wizard.sh
+    exit
 fi
 
-if [ "$1" == "" ] && [ "$2" == "" ] && [ "$3" == "" ];then
-	echo "Wizard started"
-	source wizard.sh
-else 
-	echo "Operation $OPERATION, prefix $TABLE_PREFIX, database $DATABASENAME, service $SERVICENUMBER, 1 $1, 2 $2, 3 $3"
-	source mysql-commands/table-generator.sh
-	source mysql-operations/$OPERATION.sh
-fi
+# Exibir operação e executar os scripts necessários
+echo "Operation: $OPERATION, Prefix: $TABLE_PREFIX, Database: $DATABASENAME"
+source mysql-commands/table-generator.sh
+source mysql-operations/$OPERATION.sh

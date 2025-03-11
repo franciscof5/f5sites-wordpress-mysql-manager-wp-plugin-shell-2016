@@ -1,7 +1,6 @@
 #!/bin/bash
 case "$SERVICENUMBER" in
    "1") echo "Selected all tables in database will be replaced"
-      #source mysql-commands/local-dump.sh
       TABLES_SELECTED_FOR_DUMP_LINE=""
       TABLES_SELECTED_FOR_DUMP_LINE=$TABLES_SELECTED
    ;;
