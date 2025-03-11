@@ -12,8 +12,7 @@ then
 	mkdir /bin/wpsql-cli-folder
 	echo "copying files"
 	cp -r * /bin/wpsql-cli-folder/
-	echo "(cd /bin/wpsql-cli-folder/ && exec /bin/wpsql-cli-folder/wpsql-cli.sh \$1 \$2 \$3)" > /bin/wpsql
-	#ln -s ~/bin/wpsql-cli-folder/wpsql-cli.sh ~/bin/wpsql-cli
+	echo "(cd /bin/wpsql-cli-folder/ && exec /bin/wpsql-cli-folder/wpsql.sh \$1 \$2 \$3)" > /bin/wpsql
 	sudo chmod +x /bin/wpsql
 	echo "Installation successfully"
 	echo "You can run 'wpsql' command from any directory for the current user"

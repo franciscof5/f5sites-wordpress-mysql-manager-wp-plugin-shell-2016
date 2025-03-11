@@ -7,7 +7,7 @@ if  [[ -z "$DATABASENAME" ]]; then
 else
     if [ "$DATABASENAME" == "SHOW" ]; then
     	echo "Showing..."
-    	mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL -se "SHOW DATABASES;"
+    	mysql   -se "SHOW DATABASES;"
     	source mysql-prompts/get-database-name.sh
     fi
 fi

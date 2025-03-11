@@ -1,17 +1,14 @@
 #
-MYSQL_USER_LOCAL=""
-MYSQL_PASS_LOCAL=""
-MYSQL_HOST_LOCAL=""
-MYSQL_PORT_LOCAL=""
+# Password moved for security
+# file my.cnf
+# edit and move to ~/.my.cnf
+# chmod 600 ~/.my.cnf
 #
+
+# better solution to use ssh-copy-id
 SSH_USER=""
 SSH_PASS=""
 IP="1.1.1.1"
-#
-MYSQL_USER_REMOTE=""
-MYSQL_PASS_REMOTE=""
-MYSQL_HOST_REMOTE
-MYSQL_PORT_REMOTE=""
 #
 LOCAL_BACKUP_DIR=/backup
 LOCAL_TEMP_DIR=/tmp

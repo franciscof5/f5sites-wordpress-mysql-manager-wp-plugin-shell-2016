@@ -4,7 +4,7 @@
 
 
 echo "importing and replace local data with remote..."
-mysql -u $MYSQL_USER_LOCAL -p$MYSQL_PASS_LOCAL $DATABASENAME < /tmp/$DATABASENAME-f5sites_posts.sql
+mysql   $DATABASENAME < /tmp/$DATABASENAME-f5sites_posts.sql
 
 #echo "sync-posts-remote-to-local.sh ended."
 #echo "by Francisco Matelli Matulovic | franciscomat.com | f5sites.com"

@@ -5,10 +5,10 @@ read PROCEED
 if [ "$PROCEED" = "y" ]; then
 	echo "Dumping all copys of local databases to $LOCAL_BACKUP_DIR..."
 	# Get the database list, exclude information_schema
-	for db in $(mysql -B -s -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL -e 'show databases' | grep -v information_schema)
+	for db in $(mysql -B -s      -e 'show databases' | grep -v information_schema)
 	do
 	  # dump each database in a separate file
-	  mysqldump -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL --lock-tables=false "$db" | gzip > "$LOCAL_BACKUP_DIR/$db.sql.gz"
+	  mysqldump      --lock-tables=false "$db" | gzip > "$LOCAL_BACKUP_DIR/$db.sql.gz"
 	done
 else
 	exit

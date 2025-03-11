@@ -38,8 +38,7 @@ Change default configurable variables and rename config-example.sh to config.sh.
 Tip: You can use a default value for database name and table prefix, shortening even more the commands, if you run just one WordPress site it is the best option, or if you are working most of time with one prefixed wp install on some database.
 
 ```
-MYSQL_USER_LOCAL=""
-MYSQL_PASS_LOCAL=""
+my.cnf
 #
 SSH_USER=""
 SSH_PASS=""
@@ -105,7 +104,7 @@ You can check what server has the highest WordPress post ID and then automatical
 
 1. First change settings in config-example.sh and rename it to config.sh
 
-2. Open terminal in that folder and run the command ./wpsql-cli.sh --commandname --tableprefix --databasename
+2. Open terminal in that folder and run the command ./wpsql.sh --commandname --tableprefix --databasename
 
 3. If you run ./install.sh you can just open terminal anywhere and run wpsql command with options
 

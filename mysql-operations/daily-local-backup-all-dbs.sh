@@ -11,7 +11,7 @@ test -d "$LOCAL_BACKUP_DIR/d-0" || mkdir -p "$LOCAL_BACKUP_DIR/d-0"
 
 echo "Dumping all copys of local databases to $LOCAL_BACKUP_DIR/d-0 ..."
 # Get the database list, exclude information_schema
-for db in $(mysql -B -s -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL -e 'show databases' | grep -v information_schema)
+for db in $(mysql -B -s      -e 'show databases' | grep -v information_schema)
 do
 	# dump each database in a separate file
 	echo "Backing up: $db ..."
@@ -19,14 +19,11 @@ do
 	START=$(date +%s)
 
 	#para Innodb (atual, 2025)
-	mysqldump -u "$MYSQL_USER_LOCAL" --password="$MYSQL_PASS_LOCAL" -h "$MYSQL_HOST_LOCAL" -P "$MYSQL_PORT_LOCAL" --single-transaction --quick --max-allowed-packet=512M "$db" | pigz > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
+	mysqldump     --single-transaction --quick --max-allowed-packet=512M "$db" | pigz > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
 	
 	END=$(date +%s)
 
 	echo "Backup de $db concluído em $((END - START)) segundos."
-
-	#para MyIsan (old)
-	#mysqldump -u $MYSQL_USER_LOCAL --password=$MYSQL_PASS_LOCAL -h $MYSQL_HOST_LOCAL  -P $MYSQL_PORT_LOCAL --lock-tables=false "$db" | gzip > "$LOCAL_BACKUP_DIR/d-0/$db.sql.gz"
 
 	# Limitar para no máximo 4 backups simultâneos
     while [ "$(jobs | wc -l)" -ge 4 ]; do

@@ -24,23 +24,17 @@ case "$OPERATION" in
    ;;
    "2") echo "Selected 2 - Local to Remote" 
    	OPERATION="local-replace-remote"
-   	#source mysql-prompts/get-tables-complement.sh
    ;;
    "3") echo "Selected 3 - Remote to Local" 
    	OPERATION="remote-replace-local"
-   	#source mysql-prompts/get-tables-complement.sh
    ;;
    "4") echo "Selected 4 - Compare content" 
    	OPERATION="compare-content"
-   	#source mysql-prompts/get-tables-complement.sh
-   	#source mysql-prompts/get-table.sh
-   	#source mysql-prompts/get-service-complement.sh
    ;;
    "5") echo "Selected 5 - Compare structure" 
    	OPERATION="compare-structure"
    ;;
    "7") echo "Selected 8 - Local backup all(dump)" 
-	#source mysql-prompts/get-server.sh
 	echo "1 - Quick export all database zipped to a folder"
    echo "($LOCAL_BACKUP_DIR)"
 	echo "2 - Enter advanced instructions"

@@ -98,6 +98,6 @@ if [ "$1" == "" ] && [ "$2" == "" ] && [ "$3" == "" ];then
 	source wizard.sh
 else 
 	echo "Operation $OPERATION, prefix $TABLE_PREFIX, database $DATABASENAME, service $SERVICENUMBER, 1 $1, 2 $2, 3 $3"
-source mysql-commands/table-generator.sh
-source mysql-operations/$OPERATION.sh
+	source mysql-commands/table-generator.sh
+	source mysql-operations/$OPERATION.sh
 fi

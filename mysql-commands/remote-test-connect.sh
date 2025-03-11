@@ -6,8 +6,8 @@ status=$(ssh -o BatchMode=yes -o ConnectTimeout=5 $SSH_USER@$IP echo ok 2>&1)
 
 if [[ $status == ok ]] ; then
   echo SSH OK
-  echo "SSH mysql -u $MYSQL_USER_REMOTE -p MYSQL_PASS_REMOTE -h $MYSQL_HOST_REMOTE -P $MYSQL_PORT_REMOTE -e use $DEFAULT_DATABASE"
-  if (ssh $SSH_USER@$IP mysql -u $MYSQL_USER_REMOTE -p$MYSQL_PASS_REMOTE -h $MYSQL_HOST_REMOTE -P $MYSQL_PORT_REMOTE -e "use $DEFAULT_DATABASE"); then
+  echo "SSH mysql  -p MYSQL_PASS_REMOTE   -e use $DEFAULT_DATABASE"
+  if (ssh $SSH_USER@$IP mysql     -e "use $DEFAULT_DATABASE"); then
     echo "Remote MySQL OK"
   else
     echo "Remote MySQL failed"

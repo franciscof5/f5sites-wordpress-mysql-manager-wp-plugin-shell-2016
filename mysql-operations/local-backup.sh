@@ -14,7 +14,6 @@ case "$PROCEED" in
    	exit
    	source start.sh
    	OPERATION="local-replace-remote"
-   	#source mysql-prompts/get-tables-complement.sh
    ;;
 esac
 
